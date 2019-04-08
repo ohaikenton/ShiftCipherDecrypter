@@ -11,13 +11,7 @@ const lineDisplay=100;
       colorWrite=FALSE;
       defaultColor=White;
 
-const Blue = 1; //colour constants
-      Green = 2;
-      Cyan = 3;
-      Red = 4;
-      Magenta = 5;
-      Brown = 6;
-      Yellow = 14;
+const Yellow = 14; //colour constants
       White = 15;
 
 var   userOption,fileEncr,fileDir,finalFileDecr:string;
