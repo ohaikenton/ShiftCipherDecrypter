@@ -10,8 +10,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ShiftCypher"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="285"/>
-        <CursorPos X="66" Y="300"/>
+        <CursorPos X="9" Y="15"/>
         <UsageCount Value="53"/>
         <Loaded Value="True"/>
       </Unit0>
