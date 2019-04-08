@@ -1,0 +1,63 @@
+program ShiftCipher;
+uses Crt;
+label Exit,Menu;
+const
+  totalLetter = 2000;
+var
+  userOption:String;
+  fileIn:String;
+  fileDir:String;
+  i,j:integer;
+procedure Input(dir:string);
+var
+  fileText:text;
+begin
+  assign(fileText,dir);
+  reset(fileText);
+end;
+
+begin
+  i:=0;
+  writeln('Welcome to ShiftCipherDecrypter. Start by entering the directory of the source file (.txt) to be decrypted.');
+  write('To exit the program, type EXIT and press enter: ');
+  readln(userOption);
+  if userOption = 'EXIT' then
+    goto Exit
+  else
+    fileDir:=userOption;
+  //Input(fileDir);
+  //P
+  //R
+  //O
+  //C
+  //E
+  //D
+  //U
+  //R
+  //E
+  //S
+  ClrScr;
+  writeln('Decryption successfully completed for ',fileDir,' .');
+  Menu:
+  writeln('Choose what you would like to do next.');
+  writeln('1. See decrypted text');
+  writeln('2. Output decrypted text to a file');
+  writeln('0. Exit');
+  write('Please enter the number corresponding to your choice: ');
+  readln(userOption);
+  case userOption of
+  '1': goto Menu;
+  '2': goto Menu;
+  '0': goto Exit;
+  else begin
+         ClrScr;
+         write('Please choose a valid option. ');
+         goto Menu;
+       end;
+  end;
+  Exit:
+  ClrScr;
+  writeln('Thank you for using ShiftCipherDecrypter. Press enter to exit.');
+  readln;
+end.
+

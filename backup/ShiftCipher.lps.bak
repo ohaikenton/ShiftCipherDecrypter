@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="ShiftCipher.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="11" Y="24"/>
+        <UsageCount Value="23"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <JumpHistory Count="7" HistoryIndex="6">
+      <Position1>
+        <Filename Value="ShiftCipher.lpr"/>
+        <Caret Line="10" Column="17"/>
+      </Position1>
+      <Position2>
+        <Filename Value="ShiftCipher.lpr"/>
+        <Caret Line="11" Column="44"/>
+      </Position2>
+      <Position3>
+        <Filename Value="ShiftCipher.lpr"/>
+        <Caret Line="7" Column="19"/>
+      </Position3>
+      <Position4>
+        <Filename Value="ShiftCipher.lpr"/>
+        <Caret Line="18" Column="20"/>
+      </Position4>
+      <Position5>
+        <Filename Value="ShiftCipher.lpr"/>
+        <Caret Line="11" Column="121"/>
+      </Position5>
+      <Position6>
+        <Filename Value="ShiftCipher.lpr"/>
+        <Caret Line="23" Column="7"/>
+      </Position6>
+      <Position7>
+        <Filename Value="ShiftCipher.lpr"/>
+        <Caret Line="61" Column="10" TopLine="27"/>
+      </Position7>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
