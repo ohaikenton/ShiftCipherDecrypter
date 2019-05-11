@@ -11,14 +11,8 @@ const lineDisplay=100;
       colorWrite=FALSE;
       defaultColor=White;
 
-const Blue = 1; //colour constants
-      Green = 2;
-      Cyan = 3;
-      Red = 4;
-      Magenta = 5;
-      Brown = 6;
-      Yellow = 14;
-      White = 15;
+//const Yellow = 14; //colour constants
+      //White = 15;
 
 var   userOption,fileEncr,fileDir,finalFileDecr:string;
       i,j,lengthFile,KCount,userOptionInt,allLetterCount,finalK:integer;
@@ -119,12 +113,10 @@ procedure InfoAppend;
 begin
   assign(fileOut,fileDir);
   append(fileOut);
-  writeln(fileOut);
   writeln(fileOut,'##Shift Cypher Decrypter file operation ',DateTimetoStr(Now));
   writeln(fileOut,'##Info of decryption performed is as follows:');
   writeln(fileOut,'Original file is: ',fileDir);
-  write(fileOut,'Number of characters(including punctuations');
-  writeln(fileOut,' and spaces): ',lengthFile);
+  writeln(fileOut,'Number of characters(including punctuations and spaces): ',lengthFile);
   writeln(fileOut,'Number of letters: ',allLetterCount);
   writeln(fileOut,'Final (chosen) K/Shifted by: ',finalK);
   writeln(fileOut,'Most frequent letter in the original file: ',chr(finalK+69));
@@ -139,10 +131,8 @@ begin
   clrscr;
   writeln('Please enter the file name to be created.');
   stringColorChange('Guide: ',Yellow,colorWrite);
-  write('To save the file in the same folder as the program, enter the file');
-  writeln(' name only(e.g. FileOut.txt)');
-  write('       To save the file in a different folder, enter the full path(');
-  writeln('e.g. C:\OutDir\FileOut.txt)');
+  writeln('To save the file in the same folder as the program, enter the file name only (e.g. FileOut.txt)');
+  writeln('       To save the file in a different folder, enter the full path (e.g. C:\OutDir\FileOut.txt)');
   write('Save decrypted file as: ');
   readln(userOption);
   assign(fileOut,userOption);
@@ -278,10 +268,8 @@ procedure OutRewrite;
 begin
   writeln('Please enter the file name to be created.');
   stringColorChange('Guide: ',Yellow,colorWrite);
-  write('To save the file in the same folder as the program, enter the file');
-  writeln(' name only(e.g. FileOut.txt)');
-  write('       To save the file in a different folder, enter the full path(');
-  writeln('e.g. C:\OutDir\FileOut.txt)');
+  writeln('To save the file in the same folder as the program, enter the file name only (e.g. FileOut.txt)');
+  writeln('       To save the file in a different folder, enter the full path (e.g. C:\OutDir\FileOut.txt)');
   write('Save decrypted file as: ');
   readln(userOption);
   assign(fileOut,userOption);
@@ -297,7 +285,7 @@ begin
   allLetterCount:=0;
   textcolor(defaultColor);
   writeln('Welcome to Shift Cypher Decrypter.');
-  writeln('Please enter the file name of the file to be decrypted (.txt only).');
+  writeln('Please enter the file name of the file to be decrypted.');
   stringColorChange('Guide: ',Yellow,colorWrite);
   write('If the file in the same folder as the program, enter the file');
   writeln(' name only(e.g. FileIn.txt)');
@@ -353,8 +341,7 @@ begin
     2: begin
          clrscr;
            OutputErr:
-         write('Would you like to write to the existing file or write to');
-         writeln(' a new file?');
+         writeln('Would you like to write to the existing file or write to a new file?');
          writeln();
          writeln(' 1: Output to existing file');
          writeln(' 2: Output to new file');
