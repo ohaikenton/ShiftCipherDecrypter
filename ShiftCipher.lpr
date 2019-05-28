@@ -1,6 +1,6 @@
-(*program developed by Li Chun Kit
+(* Program developed by Li Chun Kit
   Compiler: FPC v3.0.4
-  IDE: Lazarus, Visual Studio Code*)
+  IDE: Lazarus, Visual Studio Code *)
 program ShiftCypher;
 uses Crt, sysutils;
 label Exit,MenuCustom,Menu,OutputErr;
@@ -18,7 +18,7 @@ var   userOption,fileEncr,fileDir,finalFileDecr:string;
       fileDecr:array of string;
       fileOut:text;
 
-(*Allowing integers to be used as a string while keeping its value*)
+(* Allowing integers to be used as a string while keeping its value *)
 function IntToStr(inInt:integer):String;
 var temp: String;
 begin
@@ -26,7 +26,7 @@ begin
   IntToStr:=temp;
 end;
 
-(*Changing the colour of input string and optionally add a line break*)
+(* Changing the colour of input string and optionally add a line break *)
 procedure stringColorChange(inString:string;inColor:byte;lineOption:boolean);
 begin
   textcolor(inColor);
@@ -37,15 +37,15 @@ begin
   textcolor(defaultColor);
 end;
 
-(*Handling input from users' file system and store it in 1 string variable*)
+(* Handling input from users' file system and store it in 1 string variable *)
 procedure Input(dir:string);
 var fileText:text;
 begin
   assign(fileText,dir);
   reset(fileText);
-  (*Set the string variable to the predefined constant of maximum length*)
+  (* Set the string variable to the predefined constant of maximum length *)
   setlength(fileEncr,maxLetter);
-  (*Read the file into the variable no matter the amount of lines*)
+  (* Read the file into the variable no matter the amount of lines *)
   while not EOF(fileText) do
     begin
       while not EOLn(fileText) do
@@ -55,13 +55,13 @@ begin
         end;
       readln(filetext);
     end;
-  (*Readjust the length of the file*)
+  (* Readjust the length of the file *)
   lengthFile:=i;
   setlength(fileEncr,lengthFile);
   close(fileText);
 end;
 
-(*Counting the times each alphabet is present in the encrypted text*)
+(* Counting the times each alphabet is present in the encrypted text *)
 procedure CountLetter;
 begin
   for i:=65 to 90 do
@@ -72,7 +72,7 @@ begin
     end;
 end;
 
-(*Displaying the amount of times each alphabet is present in the encrypted text*)
+(* Displaying the amount of times each alphabet is present in the encrypted text *)
 procedure CountCheck;
 begin
   for i:=65 to 90 do
@@ -84,27 +84,27 @@ begin
   writeln();
 end;
 
-(*Calculating the value(s) of k*)
+(* Calculating the value(s) of k *)
 procedure FindK;
   var
-    (*Temporarily stores the times that one specific alphabet is present in the encrypted text*)
+    (* Temporarily stores the times that one specific alphabet is present in the encrypted text *)
     temp:integer;
-    (*Stores the possible value(s) of k while expanding/contracting according to no. of k values found*)
+    (* Stores the possible value(s) of k while expanding/contracting according to no. of k values found *)
     tempK:array of integer;
 begin
-  (*Initialisation*)
+  (* Initialisation *)
   setlength(tempK,1);
   temp:=0;
   for i:=65 to 90 do
     begin
-      (*Replace old k value when a more probable one is found*)
+      (* Replace old k value when a more probable one is found *)
       if temp < letterCount[i] then
         begin
           temp:=letterCount[i];
           tempK[length(tempK)]:=i-69;
           KCount:=0;
         end;
-      (*Expand tempK to the amount of K found and store its value*)
+      (* Expand tempK to the amount of K found and store its value *)
       if temp = letterCount[i] then
         begin
           setlength(tempK,length(tempK)+1);
@@ -112,10 +112,10 @@ begin
           tempK[length(tempK)]:=i-69;
         end;
     end;
-  (*Finalisation of k value(s)*)
+  (* Finalisation of k value(s) *)
   setlength(K,KCount);
   j:=1;
-  (*Clean up and copy the k value(s) to the final variable (K)*)
+  (* Clean up and copy the k value(s) to the final variable (K) *)
   for i:=length(tempK)-KCount+1 to length(tempK) do
     begin
       K[j]:=tempK[i];
@@ -123,7 +123,7 @@ begin
     end;
 end;
 
-(*Appending information on performed actions and statistics to original file*)
+(* Appending information on performed actions and statistics to original file *)
 procedure InfoAppend;
 begin
   assign(fileOut,fileDir);
@@ -141,17 +141,17 @@ begin
   close(fileOut);
 end;
 
-(*Writing information on performed actions and statistics to user specified file*)
+(* Writing information on performed actions and statistics to user specified file *)
 procedure InfoRewrite;
 begin
   clrscr;
   writeln('Please enter the file name to be created.');
-  (*Provide path formatting guidelines*)
+  (* Provide path formatting guidelines *)
   stringColorChange('Guide: ',Yellow,colorWrite);
   writeln('To save the file in the same folder as the program, enter the file name only (e.g. FileOut.txt)');
   writeln('       To save the file in a different folder, enter the full path (e.g. C:\OutDir\FileOut.txt)');
   writeln('       To save the file in a sub-folder, enter the path with respect to the program (e.g. Insub\FileOut.txt)');
-  write('Save decrypted file as: ');
+  write('Save file as: ');
   readln(userOption);
   assign(fileOut,userOption);
   rewrite(fileOut);
@@ -167,7 +167,7 @@ begin
   close(fileOut);
 end;
 
-(*Display information on performed actions and statistics*)
+(* Display information on performed actions and statistics *)
 procedure ShowInfo;
 begin
   clrscr;
@@ -191,7 +191,7 @@ begin
   stringColorChange(chr(finalK+69),Yellow,colorWriteln);
   write('Frequency of letters in original file: ');
   CountCheck;
-  (*Provide options to output displayed information*)
+  (* Provide options to output displayed information *)
   writeln();
   writeln('Choose what you would like to do next.');
   writeln();
@@ -200,7 +200,7 @@ begin
   writeln();
   write('Please enter the number corresponding to your choice: ');
   readln(userOption);
-  (*Go to InfoAppend or InfoRewrite depending on user choice*)
+  (* Go to InfoAppend or InfoRewrite depending on user choice *)
   if userOption='1' then
     begin
       clrscr;
@@ -218,7 +218,7 @@ begin
            2:InfoRewrite;
            0:;
          else
-         (*Write an error message and loop sub-menu due to invalid input*)
+         (* Write an error message and loop sub-menu due to invalid input *)
            begin
              clrscr;
              write('Invalid option. ');
@@ -228,7 +228,7 @@ begin
        end;
 end;
 
-(*Shifting the input/encrypted passage with the calculated k value(s)*)
+(* Shifting the input/encrypted passage with the calculated k value(s) *)
 procedure Shift;
 var temp:string;
 begin
@@ -248,15 +248,15 @@ begin
     end;
 end;
 
-(*Asking user to choose the most probable decryption result when there are multiple k values*)
-(*This procedure is only called when the array size of K is larger than 1*)
+(* Asking user to choose the most probable decryption result when there are multiple k values *)
+(* This procedure is only called when the array size of K is larger than 1 *)
 procedure ChooseFinal;
 var temp:string;
 begin
   clrscr;
   write('Multiple possible solutions found. ');
   writeln('Please select the most probable one:');
-  (*Display only a portion of each results whose length is predefined with constant lineDisplay*)
+  (* Display only a portion of each results whose length is predefined with constant lineDisplay *)
   for i:=1 to KCount do
     begin
       temp:=fileDecr[i];
@@ -275,12 +275,12 @@ begin
       write('Invalid option. Please enter a valid number: ');
       readln(userOptionInt);
     end;
-  (*Mark final decryption based on user choice and omitting others*)
+  (* Mark final decryption based on user choice and omitting others *)
   finalK:=userOptionInt;
   finalFileDecr:=fileDecr[userOptionInt];
 end;
 
-(*Appending decrypted text to original file*)
+(* Appending decrypted text to original file *)
 procedure OutAppend;
 begin
   assign(fileOut,fileDir);
@@ -292,11 +292,11 @@ begin
   close(fileOut);
 end;
 
-(*Writing decrypted text to user specified file*)
+(* Writing decrypted text to user specified file *)
 procedure OutRewrite;
 begin
   writeln('Please enter the file name to be created.');
-  (*Provide path formatting guidelines*)
+  (* Provide path formatting guidelines *)
   stringColorChange('Guide: ',Yellow,colorWrite);
   writeln('To save the file in the same folder as the program, enter the file name only (e.g. FileOut.txt)');
   writeln('       To save the file in a different folder, enter the full path (e.g. C:\OutDir\FileOut.txt)');
@@ -309,41 +309,46 @@ begin
   close(fileOut);
 end;
 
-(*IDE reserved parser*)
+(* IDE reserved parser *)
 {$R *.res}
 
-(*Main program*)
+(* Main program *)
 begin
-  (*Initialisation*)
+  (* Initialisation *)
   i:=0;
   allLetterCount:=0;
   textcolor(defaultColor);
   writeln('Welcome to Shift Cypher Decrypter.');
-  writeln('Please enter the file name of the file to be decrypted.');
-  (*Provide path formatting guidelines*)
-  stringColorChange('Guide: ',Yellow,colorWrite);
-  writeln('If the file is in the same folder as the program, enter the file name only (e.g. FileIn.txt)');
-  writeln('       If the file is in a different folder, enter the full path (e.g. C:\InDir\FileIn.txt)');
-  writeln('       If the file is in a sub-folder, enter the path with respect to the program (e.g. Insub\FileIn.txt)');
-  write('If you wish to exit the program now, type EXIT and press enter: ');
-  (*Receive user input on text file to be decrypted*)
-  readln(userOption);
-  (*Stop the program if user wish to do so*)
-  if (userOption = 'EXIT') or (userOption = 'exit')then
-    goto Exit
-  else
-    begin
-      clrscr;
-      fileDir:=userOption;
-      (*Though the error message would display when input is valid, it would be immediately cleared if input is valid*)
-      writeln('Please restart the program and input a valid file name.');
-      Input(userOption);
-    end;
-  (*Call procedured that are required to decrypt the excrypted text*)
+  (*Loop input phase until input is valid*)
+  repeat
+    writeln('Please enter the file name of the file to be decrypted.');
+    writeln('Current limit on maximum length of input is: ',maxLetter,' characters in total.');
+    (* Provide path formatting guidelines *)
+    stringColorChange('Guide: ',Yellow,colorWrite);
+    writeln('If the file is in the same folder as the program, enter the file name only (e.g. FileIn.txt)');
+    writeln('       If the file is in a different folder, enter the full path (e.g. C:\InDir\FileIn.txt)');
+    writeln('       If the file is in a sub-folder, enter the path with respect to the program (e.g. Insub\FileIn.txt)');
+    stringColorChange('If the path to the file does not include spaces, you may simply drag the file and drop it onto this window to automatically insert the path.',Cyan,colorWriteln);
+    write('If you wish to exit the program now, type EXIT and press enter: ');
+    (* Receive user input on text file to be decrypted *)
+    readln(userOption);
+    clrscr;
+    if not FileExists(userOption) then
+      writeln(userOption,' is invalid.');
+  until FileExists(userOption);
+    (* Stop the program if user wish to do so *)
+    if (userOption = 'EXIT') or (userOption = 'exit')then
+      goto Exit
+    else
+      begin
+        fileDir:=userOption;
+        Input(userOption);
+      end;
+  (* Call procedured that are required to decrypt the excrypted text *)
   CountLetter;
   FindK;
   Shift;
-  (*Ask user to choose the most probable decryption result when there are multiple k values*)
+  (* Ask user to choose the most probable decryption result when there are multiple k values *)
   if KCount>1 then
     ChooseFinal
   else
@@ -353,7 +358,7 @@ begin
     end;
    Menu:
   ClrScr;
-  (*Draw the main UI of the program and display legal options*)
+  (* Draw the main UI of the program and display options *)
   write('Decryption successfully completed for ',fileDir,'. ');
    MenuCustom:
   writeln('Choose what you would like to do next.');
@@ -366,9 +371,9 @@ begin
   writeln();
   write('Please enter the number corresponding to your choice: ');
   readln(userOptionInt);
-  (*Call different procedure(s) according to user's choice*)
+  (* Call different procedure(s) according to user's choice *)
   case userOptionInt of
-    1: (*Display the decrypted text on display*)
+    1: (* Display the decrypted text on display *)
        begin
          clrscr;
          writeln('Showing decrypted ',fileDir,':');
@@ -380,7 +385,7 @@ begin
          readln;
          goto Menu;
        end;
-    2: (*Write/Append the decrypted text to a file*)
+    2: (* Write/Append the decrypted text to a file *)
        begin
          clrscr;
            OutputErr:
@@ -397,7 +402,7 @@ begin
            2:OutRewrite;
            0:goto Menu;
          else
-           (*Write an error message and loop sub-menu due to invalid input*)           
+           (* Write an error message and loop sub-menu due to invalid input *)
            begin
              clrscr;
              write('Invalid option. ');
@@ -408,12 +413,12 @@ begin
          write('Output complete. ');
          goto MenuCustom;
        end;
-    3: (*Display information on performed actions and statistics*)
+    3: (* Display information on performed actions and statistics *)
        begin
          ShowInfo;
          goto Menu;
        end;
-    4: (*Display the original/encrypted text on display *)
+    4: (* Display the original/encrypted text on display  *)
        begin
            clrscr;
            writeln('Showing undecrypted ',fileDir,':');
@@ -436,5 +441,5 @@ begin
   ClrScr;
   writeln('Thank you for using Shift Cypher Decrypter. Press enter to exit.');
   readln;
-(*end of program*)
-end. 
+(* end of program *)
+end.
