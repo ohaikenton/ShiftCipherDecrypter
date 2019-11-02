@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="C:\lazarus\fpc\3.0.4\bin\x86_64-win64\fpc.exe" Date="1325662982"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq &quot;-FiC:\Users\Kenton\Desktop\SBA TEMP NEW\lib\x86_64-win64&quot; &quot;-FuC:\Users\Kenton\Desktop\SBA TEMP NEW\&quot; &quot;-FUC:\Users\Kenton\Desktop\SBA TEMP NEW\lib\x86_64-win64\&quot; &quot;-FEC:\Users\Kenton\Desktop\SBA TEMP NEW\&quot; &quot;-oC:\Users\Kenton\Desktop\SBA TEMP NEW\ShiftCypher.exe&quot; ShiftCypher.pas"/>
+</CONFIG>
