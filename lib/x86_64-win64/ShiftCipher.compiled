@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
-  <Compiler Value="C:\Pascal\lazarus\fpc\3.0.4\bin\x86_64-win64\fpc.exe" Date="1313017496"/>
-  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq &quot;-FiG:\My Drive\SBA\ICT\Shift Cipher FPC\lib\x86_64-win64&quot; &quot;-FuG:\My Drive\SBA\ICT\Shift Cipher FPC\&quot; &quot;-FUG:\My Drive\SBA\ICT\Shift Cipher FPC\lib\x86_64-win64\&quot; &quot;-FEG:\My Drive\SBA\ICT\Shift Cipher FPC\&quot; &quot;-oG:\My Drive\SBA\ICT\Shift Cipher FPC\ShiftCipher.exe&quot; ShiftCipher.lpr"/>
+  <Compiler Value="C:\lazarus\fpc\3.0.4\bin\x86_64-win64\fpc.exe" Date="1325662982"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq &quot;-FiC:\Users\Kenton\Desktop\SBA CODE FINAL\lib\x86_64-win64&quot; &quot;-FuC:\Users\Kenton\Desktop\SBA CODE FINAL\&quot; &quot;-FUC:\Users\Kenton\Desktop\SBA CODE FINAL\lib\x86_64-win64\&quot; &quot;-FEC:\Users\Kenton\Desktop\SBA CODE FINAL\&quot; &quot;-oC:\Users\Kenton\Desktop\SBA CODE FINAL\ShiftCipher.exe&quot; ShiftCipher.pas"/>
 </CONFIG>
