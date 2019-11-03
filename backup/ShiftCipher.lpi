@@ -11,9 +11,15 @@
       </Flags>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
-      <Title Value="Shift Cipher Decrypter"/>
+      <Title Value="Shift"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <XPManifest>
+        <DpiAware Value="True/PM"/>
+        <TextName Value="LiChunKit.ShiftCipher.ShiftCipherDecrypter"/>
+        <TextDesc Value="Shift Cipher Decrypter"/>
+      </XPManifest>
       <Icon Value="0"/>
     </General>
     <BuildModes Count="1">
@@ -30,9 +36,8 @@
     </RunParams>
     <Units Count="1">
       <Unit0>
-        <Filename Value="ShiftCipher.lpr"/>
+        <Filename Value="ShiftCipher.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="ShiftCypher"/>
       </Unit0>
     </Units>
   </ProjectOptions>

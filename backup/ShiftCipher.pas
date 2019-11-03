@@ -6,7 +6,7 @@ uses Crt, sysutils;
 label Exit,MenuCustom,Menu,OutputErr;
 
 const lineDisplay=100;
-      maxLetter=20000;
+      maxLetter=200000;
       colorWriteln=TRUE;
       colorWrite=FALSE;
       defaultColor=White;
@@ -350,11 +350,9 @@ begin
     clrscr;
     Validate(userOption);
     if (not FileExists(userOption)) or fileValid=false then
-      write(userOption,' is invalid. ');
-    if not FileExists(userOption) then
-      writeln('The file does not exist');
-    if fileValid=false then
-      writeln('The file contains illegal characters such as lower case letters. Ensure that the file contains upper case letters, space characters and punctuation marks only.');
+      writeln(userOption,' is invalid.');
+    if FileExists(userOption) then write('file exists; ') else write('file not found; ');
+    if fileValid then write('file valid.') else writeln('file invalid');
   until FileExists(userOption) and fileValid;
     (* Stop the program if user wish to do so *)
     if (userOption = 'EXIT') or (userOption = 'exit')then
