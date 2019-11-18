@@ -1,0 +1,6 @@
+Original file is: C:\Users\Kenton\Desktop\Testdata\Encrypted3K.txt
+Number of characters(including punctuations and spaces): 2472
+Number of letters: 2001
+Final (chosen) K/Shifted by: 11
+Most frequent letter in the original file: P
+Frequency of letters in original file: A:29 B:0 C:106 D:84 E:183 F:45 G:24 H:35 I:6 J:25 K:1 L:232 M:21 N:63 O:112 P:232 Q:38 R:32 S:95 T:132 U:4 V:1 W:81 X:38 Y:232 Z:150 
