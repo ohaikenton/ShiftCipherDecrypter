@@ -2,17 +2,17 @@
   Compiler: FPC v3.0.4
   IDE: Lazarus, Visual Studio Code *)
 program ShiftCipher;
-uses Crt, sysutils;
-label Exit,MenuCustom,Menu,OutputErr;
+uses Crt,sysutils;
+label Start,Exit,MenuCustom,Menu,OutputErr;
 
 const lineDisplay=100;
-      maxLetter=20000;
+      maxLetter=5000;
       colorWriteln=TRUE;
       colorWrite=FALSE;
       defaultColor=White;
 
 var   userOption,fileEncr,fileDir,finalFileDecr:string;
-      i,j,KCount,userOptionInt,allLetterCount,finalK:integer;
+      i,j,userOptionInt,allLetterCount,finalK:integer;
       letterCount:array[65..90] of integer;
       K:array of integer;
       fileDecr:array of string;
@@ -96,43 +96,28 @@ begin
   writeln();
 end;
 
-(* Calculating the value(s) of k *)
+(* Calculate the value(s) of k *)
 procedure FindK;
   var
     (* Temporarily stores the times that one specific alphabet is present in the encrypted text *)
     temp:integer;
-    (* Stores the possible value(s) of k while expanding/contracting according to no. of k values found *)
-    tempK:array of integer;
 begin
-  (* Initialisation *)
-  setlength(tempK,1);
-  temp:=0;
+  (* Find frequency of the most frequent letter(s) *)
+  temp:=letterCount[65];
   for i:=65 to 90 do
-    begin
-      (* Replace old k value when a more probable one is found *)
-      if temp < letterCount[i] then
-        begin
-          temp:=letterCount[i];
-          tempK[length(tempK)]:=i-69;
-          KCount:=0;
-        end;
-      (* Expand tempK to the amount of K found and store its value *)
-      if temp = letterCount[i] then
-        begin
-          setlength(tempK,length(tempK)+1);
-          inc(KCount);
-          tempK[length(tempK)]:=i-69;
-        end;
-    end;
-  (* Finalisation of k value(s) *)
-  setlength(K,KCount);
+    if letterCount[i]>temp then
+      temp:=letterCount[i];
+  SetLength(K,1);
+  (* Find the amount of most frequent letter(s) and find K value(s)*)
   j:=1;
-  (* Clean up and copy the k value(s) to the final variable (K) *)
-  for i:=length(tempK)-KCount+1 to length(tempK) do
-    begin
-      K[j]:=tempK[i];
-      inc(j);
-    end;
+  for i:=65 to 90 do
+    if letterCount[i]=temp then
+      begin
+        SetLength(K,length(K)+1);
+        K[j]:=i-69;
+        j:=j+1
+      end;
+  SetLength(K,length(K)-1);
 end;
 
 (* Appending information on performed actions and statistics to original file *)
@@ -244,10 +229,10 @@ end;
 procedure Shift;
 var temp:string;
 begin
-  setlength(fileDecr,KCount+1);
-  temp:=fileEncr;
-  for i:=1 to KCount do
+  setlength(fileDecr,length(K)+1);
+  for i:=1 to length(K) do
     begin
+      temp:=fileEncr;
       for j:=1 to length(fileEncr) do
         if (temp[j]>='A') and (temp[j]<='Z') then
           begin
@@ -261,8 +246,8 @@ begin
     end;
 end;
 
-(* Asking user to choose the most probable decryption result when there are multiple k values *)
-(* This procedure is only called when the array size of K is larger than 1 *)
+(* Ask user to choose the most probable decryption result when there are multiple k values
+   This procedure is only called when the array size of K is larger than 1 *)
 procedure ChooseFinal;
 var temp:string;
 begin
@@ -270,7 +255,7 @@ begin
   write('Multiple possible solutions found. ');
   writeln('Please select the most probable one:');
   (* Display only a portion of each results whose length is predefined with constant lineDisplay *)
-  for i:=1 to KCount do
+  for i:=1 to length(K) do
     begin
       temp:=fileDecr[i];
       writeln();
@@ -283,13 +268,13 @@ begin
   writeln();
   write('Please enter the number corresponding to your choice: ');
   readln(userOptionInt);
-  while (userOptionInt<1) or (userOptionInt>KCount) do
+  while (userOptionInt<1) or (userOptionInt>length(K)) do
     begin
       write('Invalid option. Please enter a valid number: ');
       readln(userOptionInt);
     end;
   (* Mark final decryption based on user choice and omitting others *)
-  finalK:=userOptionInt;
+  finalK:=K[userOptionInt];
   finalFileDecr:=fileDecr[userOptionInt];
 end;
 
@@ -322,7 +307,7 @@ begin
   close(fileOut);
 end;
 
-(* IDE reserved parser *)
+(* Reserved parser *)
 {$R *.res}
 
 (* Main program *)
@@ -333,6 +318,7 @@ begin
   textcolor(defaultColor);
   writeln('Welcome to Shift Cypher Decrypter.');
   (*Loop input phase until input is valid*)
+  Start:
   repeat
     writeln('Please enter the file name of the file to be decrypted.');
     writeln('Current limit on maximum length of input is: ',maxLetter,' characters in total.');
@@ -345,30 +331,39 @@ begin
     write('If you wish to exit the program now, type EXIT and press enter: ');
     (* Receive user input on text file to be decrypted *)
     readln(userOption);
-    if (userOption = 'EXIT') or (userOption = 'exit')then
+    if (userOption = 'EXIT') or (userOption = 'exit') then
       break;
     clrscr;
     Validate(userOption);
-    if (not FileExists(userOption)) or fileValid=false then
+    if fileValid=false then
       write(userOption,' is invalid. ');
     if not FileExists(userOption) then
-      writeln('The file does not exist');
+      writeln('The file does not exist.');
     if fileValid=false then
       writeln('The file contains illegal characters such as lower case letters. Ensure that the file contains upper case letters, space characters and punctuation marks only.');
   until FileExists(userOption) and fileValid;
     (* Stop the program if user wish to do so *)
     if (userOption = 'EXIT') or (userOption = 'exit')then
       goto Exit;
-  (* Call procedured that are required to decrypt the excrypted text *)
+  (* Count letter and check if file is empty *)
   CountLetter;
+  j:=0;
+  for i:= 65 to 90 do
+    j:=j+letterCount[i];
+  if j=0 then
+    begin
+      writeln('The file is empty.');
+      goto Start;
+    end;
+  (* Call procedured that are required to decrypt the excrypted text *)
   FindK;
   Shift;
   (* Ask user to choose the most probable decryption result when there are multiple k values *)
-  if KCount>1 then
+  if length(K)>1 then
     ChooseFinal
   else
     begin
-      finalFileDecr:=fileDecr[KCount];
+      finalFileDecr:=fileDecr[1];
       finalK:=K[1];
     end;
    Menu:

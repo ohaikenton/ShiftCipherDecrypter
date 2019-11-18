@@ -4,14 +4,19 @@
     <PathDelim Value="\"/>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="5">
+    <Units Count="6">
       <Unit0>
         <Filename Value="ShiftCipher.pas"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="239"/>
-        <CursorPos X="31" Y="260"/>
-        <UsageCount Value="70"/>
+        <TopLine Value="223"/>
+        <CursorPos X="7" Y="236"/>
+        <UsageCount Value="115"/>
+        <Bookmarks Count="3">
+          <Item0 X="28" Y="120"/>
+          <Item1 X="3" Y="322" ID="1"/>
+          <Item2 Y="229" ID="2"/>
+        </Bookmarks>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -19,37 +24,133 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="78"/>
         <CursorPos X="13" Y="96"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="7"/>
       </Unit1>
       <Unit2>
         <Filename Value="E:\Source Code.lpr"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="407"/>
         <CursorPos X="5" Y="445"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="5"/>
       </Unit2>
       <Unit3>
         <Filename Value="E:\Source Code.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="115"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="5"/>
       </Unit3>
       <Unit4>
         <Filename Value="..\Archieve1\Source Code.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="105"/>
         <CursorPos X="22" Y="105"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="6"/>
       </Unit4>
+      <Unit5>
+        <Filename Value="C:\lazarus\fpc\3.0.4\source\rtl\win\sysutils.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="25"/>
+        <CursorPos X="6" Y="28"/>
+        <UsageCount Value="7"/>
+      </Unit5>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="22" HistoryIndex="21">
+      <Position1>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="131" Column="10" TopLine="108"/>
+      </Position1>
+      <Position2>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="179" Column="6" TopLine="154"/>
+      </Position2>
+      <Position3>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="180" Column="44" TopLine="151"/>
+      </Position3>
+      <Position4>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="182" Column="33" TopLine="151"/>
+      </Position4>
+      <Position5>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="179" Column="25" TopLine="141"/>
+      </Position5>
+      <Position6>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="181" Column="10" TopLine="156"/>
+      </Position6>
+      <Position7>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="138" Column="22" TopLine="129"/>
+      </Position7>
+      <Position8>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="179" Column="25" TopLine="152"/>
+      </Position8>
+      <Position9>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="181" Column="67" TopLine="158"/>
+      </Position9>
+      <Position10>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="180" Column="16" TopLine="158"/>
+      </Position10>
+      <Position11>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="181" Column="67" TopLine="171"/>
+      </Position11>
+      <Position12>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="430" Column="4" TopLine="417"/>
+      </Position12>
+      <Position13>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="314" Column="45" TopLine="294"/>
+      </Position13>
+      <Position14>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="312" Column="24" TopLine="290"/>
+      </Position14>
+      <Position15>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="308" Column="48" TopLine="290"/>
+      </Position15>
+      <Position16>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="184" Column="5" TopLine="172"/>
+      </Position16>
+      <Position17>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="185" Column="29" TopLine="172"/>
+      </Position17>
+      <Position18>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="199" Column="93" TopLine="182"/>
+      </Position18>
+      <Position19>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="313" Column="32" TopLine="298"/>
+      </Position19>
+      <Position20>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="431" Column="18" TopLine="400"/>
+      </Position20>
+      <Position21>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="415" Column="53" TopLine="398"/>
+      </Position21>
+      <Position22>
+        <Filename Value="ShiftCipher.pas"/>
+        <Caret Line="233" Column="5" TopLine="225"/>
+      </Position22>
+    </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes Count="0" ActiveMode="default"/>
     </RunParams>
   </ProjectSession>
   <Debugging>
-    <Watches Count="4">
+    <Watches Count="11">
       <Item1>
         <Expression Value="KCount"/>
       </Item1>
@@ -60,8 +161,29 @@
         <Expression Value="i"/>
       </Item3>
       <Item4>
-        <Expression Value="j"/>
+        <Expression Value="j-1"/>
       </Item4>
+      <Item5>
+        <Expression Value="K[1]"/>
+      </Item5>
+      <Item6>
+        <Expression Value="K[2]"/>
+      </Item6>
+      <Item7>
+        <Expression Value="K[3]"/>
+      </Item7>
+      <Item8>
+        <Expression Value="length(tempK)-KCount+1"/>
+      </Item8>
+      <Item9>
+        <Expression Value="tempK[1]"/>
+      </Item9>
+      <Item10>
+        <Expression Value="tempK[2]"/>
+      </Item10>
+      <Item11>
+        <Expression Value="tempK[3]"/>
+      </Item11>
     </Watches>
   </Debugging>
 </CONFIG>
