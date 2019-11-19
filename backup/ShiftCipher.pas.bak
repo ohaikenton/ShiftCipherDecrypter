@@ -1,4 +1,4 @@
-(* Program developed by Li Chun Kit
+(* Program developed by Li Chun Kit. © Li Chun Kit 2019. All rights reserved.
   Compiler: FPC v3.0.4
   IDE: Lazarus, Visual Studio Code *)
 program ShiftCipher;
