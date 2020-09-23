@@ -10,4 +10,4 @@ Note:
 A shift cipher decrypter can guess the message without knowing k. If a message is long enough, the most frequent letter will be ‘E’.
 
 # About this repo
-This repo is an effort to open-source the code of the Shift Cipher Decrypter project, which is a work done by Li Chun Kit as his work for the HKDSE Information and Communication Technology (ICT) School-based Assesment (SBA) examination. 
+This repo is an effort to open-source the code of the Shift Cipher Decrypter project, which is a work done by Li Chun Kit as his work for the 2020 HKDSE Information and Communication Technology (ICT) School-based Assesment (SBA) examination. 
